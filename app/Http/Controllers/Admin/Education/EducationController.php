@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin\Education;
 
 use App\Http\Controllers\Controller;
-use App\Models\Education;
+
+use App\Models\education;
 use Illuminate\Http\Request;
 
 class EducationController extends Controller
@@ -15,7 +16,7 @@ class EducationController extends Controller
      */
     public function index()
     {
-        $education = Education::query();
+        $education = education::query();
 
         if ($keyword = \request()->search) {
             $education->where('title', 'LIKE', "%{$keyword}%")->orWhere('body', 'LIKE', "%{$keyword}%")->orWhere('place', 'LIKE', "%{$keyword}%");
@@ -53,7 +54,7 @@ class EducationController extends Controller
             'company' => 'required',
             'img' => 'required'
         ]);
-        $status = Education::create($data);
+        $status = education::create($data);
         if (!$status) {
             alert()->error('عملیات ثبت با خطا مواجه شد', 'خطا');
             return back();
@@ -76,7 +77,7 @@ class EducationController extends Controller
     }
 
 
-    public function edit(Education $education)
+    public function edit(education $education)
     {
 
         return view('admin.education.edit_ducation', [
@@ -91,7 +92,7 @@ class EducationController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Education $education)
+    public function update(Request $request, education $education)
     {
         $data = $request->validate([
             'title' => 'required',
@@ -120,7 +121,7 @@ class EducationController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Education $education)
+    public function destroy(education $education)
     {
         $education->delete();
         alert()->success('حذف با موفقیت انجام شد', 'موفق!');
