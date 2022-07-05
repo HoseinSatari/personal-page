@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Comment;
 
-use App\Models\comment;
+use App\Models\Comment;
 use Livewire\Component;
 
 class Send extends Component
@@ -35,7 +35,7 @@ class Send extends Component
     public function store()
     {
         $this->validate();
-        comment::create([
+        Comment::create([
             'user_id' => auth()->check() ? auth()->user()->id : null,
             'parent_id' => $this->parent_id,
             'commentable_type' => $this->commentable_type,
