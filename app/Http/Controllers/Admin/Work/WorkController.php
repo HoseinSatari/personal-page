@@ -77,7 +77,7 @@ class WorkController extends Controller
 
     public function edit(Work_experience $Work)
     {
-        return view('admin.Work.edit', [
+        return view('admin.work.edit', [
             'work' => $Work,
         ]);
     }
