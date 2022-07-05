@@ -35,7 +35,7 @@ class Send extends Component
     public function store()
     {
         $this->validate();
-        Comment::create([
+        comment::create([
             'user_id' => auth()->check() ? auth()->user()->id : null,
             'parent_id' => $this->parent_id,
             'commentable_type' => $this->commentable_type,
