@@ -1,6 +1,9 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+use niklasravnsborg\LaravelPdf\Facades\Pdf;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,13 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-Route::get('/test', function () {
-    $article = \App\Models\Category::where('id' , 2)->first();
-    dd($article->articles()->get());
-});
+
+Route::get('/', \App\Http\Livewire\Index::class)->name('home');
+Route::get('/blog', \App\Http\Livewire\Blog\Index::class)->name('blog');
+Route::get('/blog/{slug}', \App\Http\Livewire\Blog\Single::class)->name('single');
 
 
 Route::get('login' , \App\Http\Livewire\Auth\Login\Login::class)->name('login')->middleware('guest');

@@ -100,9 +100,10 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
 <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
-<script src="/date/jquery-1.12.0.min.js"></script>
+
 <script src="/date/persian-date.min.js"></script>
 <script src="/date/persian-datepicker.min.js"></script>
+
 @yield('script')
 @include('sweetalert::alert')
 </body>

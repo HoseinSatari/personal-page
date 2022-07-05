@@ -15,5 +15,7 @@ class education extends Model
         'start',
         'end',
         'order_number',
+        'company',
+        'img',
     ];
 }

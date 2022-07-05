@@ -48,7 +48,7 @@ class SoftSkillController extends Controller
             'percent' => 'required|integer|between:1,100',
             'year_work' => 'required|integer',
             'order_number' => 'required|integer',
-            'icon_code' => 'required',
+            'icon_code' => 'nullable',
 
         ]);
         $status = Soft_skills::create($data);
@@ -100,7 +100,7 @@ class SoftSkillController extends Controller
             'percent' => 'required|integer|between:1,100',
             'year_work' => 'required|integer',
             'order_number' => 'required|integer',
-            'icon_code' => 'required',
+            'icon_code' => 'nullable',
 
         ]);
         $status = $softskill->update($data);

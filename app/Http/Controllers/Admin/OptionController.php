@@ -33,7 +33,6 @@ class OptionController extends Controller
             'stackoverflow' => ['required'],
             'twitter' => ['required'],
             'telegram' => ['required'],
-            'about' => ['required'],
         ]);
 
         $option = Option::find(1);

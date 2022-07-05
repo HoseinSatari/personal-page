@@ -49,7 +49,7 @@ class SkillController extends Controller
             'percent' => 'required|integer|between:1,100',
             'year_work' => 'required|integer',
             'order_number' => 'required|integer',
-            'icon_code' => 'required',
+            'icon_code' => 'nullable',
 
         ]);
         $status = Skills::create($data);
@@ -100,7 +100,7 @@ class SkillController extends Controller
             'percent' => 'required|integer|between:1,100',
             'year_work' => 'required|integer',
             'order_number' => 'required|integer',
-            'icon_code' => 'required',
+            'icon_code' => 'nullable',
 
         ]);
         $status = $skill->update($data);

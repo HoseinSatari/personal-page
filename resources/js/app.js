@@ -1,4 +1,4 @@
-require('./bootstrap');
+
 
 
 let Swal = require('sweetalert2')

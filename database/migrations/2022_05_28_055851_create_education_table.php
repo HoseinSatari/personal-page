@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('education', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('company')->nullable();
+            $table->string('img')->nullable();
             $table->text('body');
             $table->string('place');
             $table->string('start');

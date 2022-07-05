@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->integer('percent');
             $table->integer('year_work');
-            $table->string('icon_code');
+            $table->string('icon_code')->nullable();
             $table->integer('order_number');
             $table->timestamps();
         });

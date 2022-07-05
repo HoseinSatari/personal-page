@@ -56,6 +56,10 @@ Route::get('contact' , 'ContactController@index')->name('contact.index');
 Route::delete('Contact/{id}/delete' , 'ContactController@delete')->name('contact.delete');
 Route::post('contact/{id}' , 'ContactController@approved')->name('contact.approved');
 
+Route::get('/comments' , 'CommentController@index')->name('comments');
+Route::put('/comments/approved/{id}' , 'CommentController@approve')->name('comments.approve');
+Route::post('/comments/send' , 'CommentController@send')->name('comments.send');
+Route::delete('/comments/{id}/delete' , 'CommentController@delete')->name('comments.delete');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

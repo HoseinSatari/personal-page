@@ -49,7 +49,9 @@ class EducationController extends Controller
             'start' => 'required',
             'end' => 'nullable',
             'place' => 'nullable',
-            'order_number' => 'required'
+            'order_number' => 'required',
+            'company' => 'required',
+            'img' => 'required'
         ]);
         $status = Education::create($data);
         if (!$status) {
@@ -98,7 +100,9 @@ class EducationController extends Controller
             'end' => 'nullable',
             'place' => 'nullable',
             'top' => 'nullable',
-            'order_number' => 'required'
+            'order_number' => 'required',
+            'company' => 'required',
+            'img' => 'required'
         ]);
         $status = $education->update($data);
         if (!$status) {

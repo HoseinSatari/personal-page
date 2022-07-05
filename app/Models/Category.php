@@ -32,7 +32,7 @@ class Category extends Model
     }
     public function articles()
     {
-        return $this->morphedByMany(Articles::class, 'category' , 'categoryable' );
+        return $this->morphedByMany(Articles::class, 'category' , 'categoriable' );
     }
     public function work()
     {

@@ -81,6 +81,37 @@
                             <p> پیام های ارتباط با من</p>
                         </a>
                     </li>
+
+
+
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="fa fa-circle-o nav-icon"></i>
+                            <p>
+                               نظرات ({{\App\Models\Comment::whereapproved(0)->count()}})
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('comments')}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p> تایید شده ({{\App\Models\Comment::whereapproved(1)->count()}}) </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('comments' , ['unapproved' => 1])}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>تایید نشده ({{\App\Models\Comment::whereapproved(0)->count()}})</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+
+
                     <li class="nav-item">
                         <a href="{{route('option.index')}}" class="nav-link {{ isactive(['option.index' ]) }}">
                             <i class="fa fa-circle-o nav-icon"></i>

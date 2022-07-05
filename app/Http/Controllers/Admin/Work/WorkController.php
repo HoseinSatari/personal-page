@@ -50,7 +50,8 @@ class WorkController extends Controller
             'start' => 'required',
             'end' => 'nullable',
             'place' => 'nullable',
-            'order_number' => 'required'
+            'order_number' => 'required',
+            'company' => 'required'
         ]);
         $status = Work_experience::create($data);
         if (!$status) {
@@ -97,7 +98,8 @@ class WorkController extends Controller
             'end' => 'nullable',
             'place' => 'nullable',
             'top' => 'nullable',
-            'order_number' => 'required'
+            'order_number' => 'required',
+             'company' => 'required'
         ]);
         $status = $Work->update($data);
         if (!$status) {

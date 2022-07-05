@@ -15,5 +15,6 @@ class Work_experience extends Model
         'start',
         'end',
         'order_number',
+        'company',
     ];
 }

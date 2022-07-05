@@ -5,6 +5,14 @@
         <li class="breadcrumb-item"> ویرایش تحصیلات</li>
 
     @endslot
+    @section('script')
+        <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+        <script>
+            $('#lfm').filemanager('image');
+        </script>
+
+
+    @endsection
     <div class="card card-warning">
         <div class="card-header">
             <h3 class="card-title">ویرایش تحصیلات </h3>
@@ -25,6 +33,17 @@
                                    </span>
             @enderror
         </div>
+            <div class="form-group">
+                <label for="token" class="col-form-label">کمپانی :</label>
+                <input type="text" value="{{old('company' , $education->company)}}"
+                       class="form-control @error('company') is-invalid @enderror"
+                       name="company">
+                @error('company')
+                <span class="invalid-feedback">
+                                       <strong>{{ $message }}</strong>
+                                   </span>
+                @enderror
+            </div>
         <div class="form-group">
             <label for="token" class="col-form-label">توضیحات :</label>
             <textarea name="body" id=""
@@ -76,7 +95,15 @@
             @enderror
         </div>
 
-
+            <div class="form-group">
+                <label class="col-sm-3 control-label " >تصویر مدرک :</label>
+                <div class="input-group">
+                    <input type="text" id="thumbnail" class="form-control" value="{{$education->img}}" name="img">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="lfm" data-input="thumbnail" data-preview="holder">انتخاب</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
