@@ -52,7 +52,7 @@ class EducationController extends Controller
             'place' => 'nullable',
             'order_number' => 'required',
             'company' => 'required',
-            'img' => 'required'
+            'img' => 'nullable'
         ]);
         $status = education::create($data);
         if (!$status) {

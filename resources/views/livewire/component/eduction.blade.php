@@ -8,20 +8,21 @@
 
                     @foreach($eductions as $eduction)
 
-                    <div class="education-box">
-                        <time class="education-date" datetime="2014-01T2016-03">
-                            <span>{{$eduction->start}} - {{$eduction->end}}</span>
-                        </time>
-                        <h3>{{$eduction->title}}</h3>
-                        <span class="education-company">{{$eduction->company}}</span>
-                       <p>
-                           {{$eduction->body}}
-                       </p>
-                        <a href="{{$eduction->img}}">برای مشاهده تصویر مدرک کلیک کنید</a>
-                    </div>
+                        <div class="education-box">
+                            <time class="education-date" datetime="2014-01T2016-03">
+                                <span>{{$eduction->start}} - {{$eduction->end}}</span>
+                            </time>
+                            <h3>{{$eduction->title}}</h3>
+                            <span class="education-company">{{$eduction->company}}</span>
+                            <p>
+                                {{$eduction->body}}
+                            </p>
+                            @if($eduction->img)
+                                <a href="{{$eduction->img}}">برای مشاهده تصویر مدرک کلیک کنید</a>
+                            @endif
+                        </div>
                     @endforeach
                     <!-- .education-box -->
-
 
 
                 </div>
