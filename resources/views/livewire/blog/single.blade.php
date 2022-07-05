@@ -104,6 +104,8 @@
                         @if(!$this->article->comments()->where('parent_id', null)->count())
                             <br><br>
                            <span>اولین نفری باشید که نظر میگذارید</span>
+                            <br><br>
+
                         @endif
                         <div class="padd-box-sm">
                             <ol class="comment-list clear-list">
