@@ -101,7 +101,10 @@
 {{--                @if($readyToLoad)--}}
                     <div id="comments" class="comments-area">
                         <h2 class="title text-upper">دیدگاه‌ها</h2>
-
+                        @if(!$this->article->comments()->where('parent_id', null)->count())
+                            <br><br>
+                           <span>اولین نفری باشید که نظر میگذارید</span>
+                        @endif
                         <div class="padd-box-sm">
                             <ol class="comment-list clear-list">
                                 @foreach($this->article->comments()->where('parent_id', null)->get() as $comment)

@@ -11,7 +11,7 @@
                         <div class="pf-grid-sizer"></div><!-- used for sizing -->
                        @foreach($jobs as $job )
                         <div class="pf-grid-item bg-light" style="background: #fff;border: 1px solid black;box-shadow: 0 .75rem .5rem rgba(0,0,0,.5)">
-                            <a class="pf-project" href="#pf-popup-1">
+                            <a class="pf-project" href="#pf-popup-{{$loop->index}}">
                                 <figure class="pf-figure">
                                     <img src="{{$job->poster}}" alt="{{$job->title}}" style="height: 280px">
                                 </figure>
@@ -31,7 +31,7 @@
                                 </div>
                             </a><!-- .pf-project -->
 
-                            <div id="pf-popup-1" class="pf-popup clearfix">
+                            <div id="pf-popup-{{$loop->index}}" class="pf-popup clearfix">
                                 <div class="pf-popup-col1">
                                     <div class="pf-popup-media cr-slider" data-init="none">
                                         <div class="pf-popup-embed">
