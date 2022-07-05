@@ -22,21 +22,21 @@ Route::prefix('InfoBasic')->namespace('InfoBasic')->group(function () {
 });
 
 
-Route::namespace('education')->group(function () {
+Route::namespace('Education')->group(function () {
     Route::resource('education' , 'EducationController')->except('show');
 });
 Route::namespace('Work')->group(function () {
     Route::resource('Work' , 'WorkController')->except('show');
 });
 
-Route::namespace('skill')->group(function () {
+Route::namespace('Skill')->group(function () {
     Route::resource('skill' , 'SkillController')->except('show');
 });
 Route::namespace('SoftSkill')->group(function () {
     Route::resource('softskill' , 'SoftSkillController')->except('show');
 });
 
-Route::namespace('job')->group(function () {
+Route::namespace('Job')->group(function () {
     Route::resource('job' , 'JobController')->except('show');
 });
 Route::namespace('article\category')->group(function () {
