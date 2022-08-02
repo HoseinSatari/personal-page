@@ -31,14 +31,14 @@ class InfoBasicController extends Controller
             'email' => 'required|email',
             'phone' => 'required|numeric',
             'country' => 'required|string',
-            'year_work' => 'required',
+//            'year_work' => 'required',
             'about' => 'required',
             'place' => 'required',
             'img' => 'required',
         ]);
 
-        $data['birth'] = convertPersianToEnglish($data['birth']);
-        $data['birth'] = \Morilog\Jalali\CalendarUtils::createDatetimeFromFormat('Y-m-d', $data['birth']);
+//        $data['birth'] = convertPersianToEnglish($data['birth']);
+//        $data['birth'] = \Morilog\Jalali\CalendarUtils::createDatetimeFromFormat('Y-m-d', $data['birth']);
         $status = $id->update($data);
 
         if (!$status) {
