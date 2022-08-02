@@ -100,7 +100,7 @@
                             <td class="text-align-center"><i class="badge badge-gray-400">{{$comment->email}}</i></td>
                             <td class="text-align-center">{{$comment->comment}}</td>
                             <td class="text-align-center">
-                                        <a href="">{{\App\Models\Articles::find($comment->commentable_id)->title}}</a>
+                                        <a href="">{{\App\Models\Articles::find($comment->commentable_id)->title ?? ''}}</a>
                             </td>
                             <td class="text-align-center">
                                 @if(!$comment->approved)
