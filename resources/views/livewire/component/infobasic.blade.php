@@ -39,8 +39,8 @@
                             <dt>نام کامل</dt>
                             <dd>{{$info->name}}</dd>
 
-                            <dt>تاریخ تولد</dt>
-                            <dd>{{jdate($info->birth)->format('Y-%m-%d')}}</dd>
+{{--                            <dt>تاریخ تولد</dt>--}}
+{{--                            <dd>{{jdate($info->birth)->format('Y-%m-%d')}}</dd>--}}
 
                             <dt>ایمیل</dt>
                             <dd><a href="mailto:{{$info->email}}">{{$info->email}}</a></dd>
