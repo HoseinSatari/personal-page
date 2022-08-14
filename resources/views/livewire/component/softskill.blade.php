@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         @foreach($skills as $skill)
-                            <button class="btn btn-upper btn-primary">{{$skill->title}}</button>
+                            <button class="btn btn-upper btn-primary mb-2">{{$skill->title}}</button>
 
                         @endforeach
                     </div><!-- .col-sm-6 -->
