@@ -8,10 +8,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         @foreach($skills as $skill)
-                            <div class="progress-line crt-animate" role="progressbar" aria-valuenow="{{$skill->percent}}" aria-valuemin="0" aria-valuemax="100">
-                                <strong class="progress-title">{{$skill->title}}</strong>
-                                <div class="progress-bar" data-text="{{$skill->percent}}%" data-value="0.{{$skill->percent}}"></div>
-                            </div><!-- .progress-line -->
+                            <button class="btn btn-upper btn-primary">{{$skill->title}}</button>
+
                         @endforeach
                     </div><!-- .col-sm-6 -->
                 </div><!-- .row -->
