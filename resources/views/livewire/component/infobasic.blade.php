@@ -64,6 +64,20 @@
 												<span class="bullet fill"></span>
 												<span class="bullet fill"></span>
 												<span class="bullet fill"></span>
+												<span class="bullet fill"></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+											</span>
+                            <span class="progress-text text-muted">خواندن</span>
+
+                            <span class="progress-bar">
+												<span class="bullet fill"></span>
+												<span class="bullet fill"></span>
+												<span class="bullet fill"></span>
+												<span class="bullet fill"></span>
 												<span class="bullet "></span>
 												<span class="bullet "></span>
 												<span class="bullet "></span>
@@ -71,7 +85,36 @@
 												<span class="bullet "></span>
 												<span class="bullet "></span>
 											</span>
-                            <span class="progress-text text-muted">کار راه انداز</span>
+                            <span class="progress-text text-muted">نوشتن</span>
+
+                            <span class="progress-bar">
+												<span class="bullet fill"></span>
+												<span class="bullet fill"></span>
+												<span class="bullet fill"></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+											</span>
+                            <span class="progress-text text-muted">گفتاری</span>
+
+                            <span class="progress-bar">
+												<span class="bullet fill"></span>
+												<span class="bullet fill"></span>
+												<span class="bullet fill"></span>
+												<span class="bullet fill"></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+												<span class="bullet "></span>
+											</span>
+                            <span class="progress-text text-muted">شنیداری</span>
+
                         </div>
 
                     </div>
