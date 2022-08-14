@@ -5,7 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <style>
+        .mb-2{
+            margin-bottom: 0.5rem;
+        }
+    </style>
     <title>@yield('title' ,  option()->sitename)</title>
     <meta name="subject" content="@yield('subject')"/>
     <meta name="description" content="@yield('descrip' , 'صفحه اصلی ')">
