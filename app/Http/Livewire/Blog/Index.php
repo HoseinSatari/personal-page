@@ -27,7 +27,7 @@ class Index extends Component
     {
         if ($this->readyToLoad) {
 
-            $articles = Articles::query();
+            $articles = Articles::query()->orderBy('created_at' , 'desc');
 
             if ($this->category) {
                 $category = Category::whereslug($this->category)->firstorfail();
