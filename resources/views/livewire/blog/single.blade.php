@@ -33,7 +33,12 @@
                     </header>
 
                     <div class="post-content entry-content editor clearfix clear-mrg">
-                        {!! $article->body !!}
+                        @if($article->is_active == 1)
+                            {!! $article->body !!}
+                        @else
+                            <p class="text-center text-danger">این مقاله قابل نمایش نیست</p>
+                        @endif
+
                     </div>
 
                     <footer class="post-footer">
@@ -56,9 +61,14 @@
                         <div class="post-footer-btm">
                             <div class="post-tags">
                                 <span class="screen-reader-text">برچسب ها </span>
-                                @foreach(explode(',' , $article->keyword) as $item)
-                                    <a href="#" title="{{$item}}" rel="tag">{{$item}}</a>
-                                @endforeach
+                                @if($article->is_active == 1)
+                                    @foreach(explode(',' , $article->keyword) as $item)
+                                        <a href="#" title="{{$item}}" rel="tag">{{$item}}</a>
+                                    @endforeach
+                                @else
+                                    <p class="text-center text-danger">برپسب های این مقاله قابل نمایش نیست</p>
+                                @endif
+
 
                             </div>
                         </div>
@@ -101,130 +111,135 @@
 {{--                @if($readyToLoad)--}}
                     <div id="comments" class="comments-area">
                         <h2 class="title text-upper">دیدگاه‌ها</h2>
-                        @if(!$this->article->comments()->where('parent_id', null)->count())
-                            <br><br>
-                           <span>اولین نفری باشید که نظر میگذارید</span>
-                            <br><br>
+                        @if($article->is_active == 1)
+                            @if(!$this->article->comments()->where('parent_id', null)->count())
+                                <br><br>
+                                <span>اولین نفری باشید که نظر میگذارید</span>
+                                <br><br>
 
-                        @endif
-                        <div class="padd-box-sm">
-                            <ol class="comment-list clear-list">
-                                @foreach($this->article->comments()->where('parent_id', null)->get() as $comment)
-                                    <li class="comment bypostauthor">
-                                        <article class="comment-body">
-                                            <header class="comment-header">
-                                                <div class="comment-author vcard">
-                                                    <img alt=""
-                                                         src="@if($comment->user and $comment->user->issuperuser()) {{\App\Models\info_basic::find(1)->img}} @else /assets/images/uploads/avatar/avatar-58x58-default.png @endif"
-                                                         srcset="@if($comment->user and $comment->user->issuperuser()) {{\App\Models\info_basic::find(1)->img}} @else /assets/images/uploads/avatar/avatar-58x58-default.png @endif 2x"
-                                                         class="avatar avatar-58 photo"
-                                                         style="width: 58px;height: 58px">
-                                                    <strong
-                                                        @if($comment->user and $comment->user->issuperuser()) class="fn" @endif><a
-                                                            onclick="event.preventDefault()" rel="external nofollow"
-                                                            class="url">{{$comment->name}} </a></strong>
-                                                </div>
-
-                                                <div class="comment-date">
-                                                    در <a onclick="event.preventDefault()">
-                                                        <time
-                                                            datetime="{{$comment->created_at}}">{{jdate($comment->created_at)->format('d M Y h:i')}}
-                                                        </time>
-                                                    </a>
-                                                </div>
-                                            </header>
-
-                                            <div class="comment-content clear-mrg">
-                                                <p>
-                                                    {{$comment->comment}}
-                                                </p>
-                                            </div>
-
-                                            <footer class="comment-footer">
-                                                @if($comment->child()->count())
-                                                    <div class="comment-replys-count">
-                                                        <a rel="nofollow" class="comment-replys-link"
-                                                           onclick="event.preventDefault()"
-                                                           aria-label="Replys to Mr {{$comment->name}}">{{$comment->child()->count()}}
-                                                            پاسخ</a>
+                            @endif
+                            <div class="padd-box-sm">
+                                <ol class="comment-list clear-list">
+                                    @foreach($this->article->comments()->where('parent_id', null)->where('approved' , 1)->get() as $comment)
+                                        <li class="comment bypostauthor">
+                                            <article class="comment-body">
+                                                <header class="comment-header">
+                                                    <div class="comment-author vcard">
+                                                        <img alt=""
+                                                             src="@if($comment->user and $comment->user->issuperuser()) {{\App\Models\info_basic::find(1)->img}} @else /assets/images/uploads/avatar/avatar-58x58-default.png @endif"
+                                                             srcset="@if($comment->user and $comment->user->issuperuser()) {{\App\Models\info_basic::find(1)->img}} @else /assets/images/uploads/avatar/avatar-58x58-default.png @endif 2x"
+                                                             class="avatar avatar-58 photo"
+                                                             style="width: 58px;height: 58px">
+                                                        <strong
+                                                            @if($comment->user and $comment->user->issuperuser()) class="fn" @endif><a
+                                                                onclick="event.preventDefault()" rel="external nofollow"
+                                                                class="url">{{$comment->name}} </a></strong>
                                                     </div>
-                                                @endif
 
-                                                <div class="comment-links">
-                                                    <a class="comment-reply-link" rel="nofollow"  onclick="comment_answer({{$comment->id}});event.preventDefault()"
-                                                       aria-label="Reply to Mr {{$comment->name}}">پاسخ</a>
+                                                    <div class="comment-date">
+                                                        در <a onclick="event.preventDefault()">
+                                                            <time
+                                                                datetime="{{$comment->created_at}}">{{jdate($comment->created_at)->format('d M Y h:i')}}
+                                                            </time>
+                                                        </a>
+                                                    </div>
+                                                </header>
+
+                                                <div class="comment-content clear-mrg">
+                                                    <p>
+                                                        {{$comment->comment}}
+                                                    </p>
                                                 </div>
+
+                                                <footer class="comment-footer">
+                                                    @if($comment->child()->count())
+                                                        <div class="comment-replys-count">
+                                                            <a rel="nofollow" class="comment-replys-link"
+                                                               onclick="event.preventDefault()"
+                                                               aria-label="Replys to Mr {{$comment->name}}">{{$comment->child()->count()}}
+                                                                پاسخ</a>
+                                                        </div>
+                                                    @endif
+
+                                                    <div class="comment-links">
+                                                        <a class="comment-reply-link" rel="nofollow"  onclick="comment_answer({{$comment->id}});event.preventDefault()"
+                                                           aria-label="Reply to Mr {{$comment->name}}">پاسخ</a>
+                                                    </div>
                                                     <div class="comment-answer" id="comment_{{$comment->id}}">
                                                         <livewire:comment.send :obj="$article" :status="0" :commentable_type="get_class($article)"
                                                                                :commentable_id="$article->id" :parent_id="$comment->id" />
                                                     </div>
-                                            </footer>
-                                        </article><!-- .comment-body -->
+                                                </footer>
+                                            </article><!-- .comment-body -->
 
-                                        @if($comment->child())
-                                            <ol class="children clear-list">
-                                                @foreach($comment->child()->get() as $child)
-                                                    <li class="comment">
-                                                        <article class="comment-body">
-                                                            <header class="comment-header">
-                                                                <div class="comment-author vcard">
-                                                                    <img alt=""
-                                                                         src="@if($child->user and $child->user->issuperuser()) {{\App\Models\info_basic::find(1)->img}} @else /assets/images/uploads/avatar/avatar-58x58-default.png @endif"
-                                                                         srcset="assets/images/uploads/avatar/avatar-116x116-default-2x.jpg 2x"
-                                                                         class="avatar avatar-58 avatar-default photo"
-                                                                         style="width: 58px;height: 58px">
+                                            @if($comment->child())
+                                                <ol class="children clear-list">
+                                                    @foreach($comment->child()->get() as $child)
+                                                        <li class="comment">
+                                                            <article class="comment-body">
+                                                                <header class="comment-header">
+                                                                    <div class="comment-author vcard">
+                                                                        <img alt=""
+                                                                             src="@if($child->user and $child->user->issuperuser()) {{\App\Models\info_basic::find(1)->img}} @else /assets/images/uploads/avatar/avatar-58x58-default.png @endif"
+                                                                             srcset="assets/images/uploads/avatar/avatar-116x116-default-2x.jpg 2x"
+                                                                             class="avatar avatar-58 avatar-default photo"
+                                                                             style="width: 58px;height: 58px">
 
-                                                                    <strong
-                                                                        @if($child->user and $child->user->issuperuser()) class="fn" @endif><a
-                                                                            onclick="event.preventDefault()"
-                                                                            rel="external nofollow"
-                                                                            class="url">{{$child->name}}
-                                                                        </a></strong>
+                                                                        <strong
+                                                                            @if($child->user and $child->user->issuperuser()) class="fn" @endif><a
+                                                                                onclick="event.preventDefault()"
+                                                                                rel="external nofollow"
+                                                                                class="url">{{$child->name}}
+                                                                            </a></strong>
+                                                                    </div>
+
+                                                                    <div class="comment-date">
+                                                                        در <a onclick="event.preventDefault()">
+                                                                            <time
+                                                                                datetime="{{$child->created_at}}">{{jdate($child->created_at)->format('d M Y h:i')}}
+
+                                                                            </time>
+                                                                        </a>
+                                                                    </div>
+                                                                </header>
+
+                                                                <div class="comment-content clear-mrg">
+                                                                    <span style="color: #0d6efd">@ {{$comment->name }}</span>
+                                                                    <p>{{$child->comment}}</p>
                                                                 </div>
 
-                                                                <div class="comment-date">
-                                                                    در <a onclick="event.preventDefault()">
-                                                                        <time
-                                                                            datetime="{{$child->created_at}}">{{jdate($child->created_at)->format('d M Y h:i')}}
+                                                                <footer class="comment-footer">
+                                                                    <div class="comment-links">
+                                                                        <a class="comment-reply-link" rel="nofollow"
+                                                                           onclick="comment_answer({{$child->id}});event.preventDefault()"
+                                                                           aria-label="Reply to Mr WordPress">پاسخ</a>
+                                                                    </div>
+                                                                    <div class="comment-answer" id="comment_{{$child->id}}">
+                                                                        <livewire:comment.send :obj="$article" :status="0" :commentable_type="get_class($article)"
+                                                                                               :commentable_id="$article->id" :parent_id="$child->id" />
+                                                                    </div>
+                                                                </footer>
+                                                            </article><!-- .comment-body -->
 
-                                                                        </time>
-                                                                    </a>
-                                                                </div>
-                                                            </header>
+                                                            @if($child->child())
+                                                                @foreach($child->child()->get() as $chi)
+                                                                    @include('layouts.comment' , ['comment' => $chi])
+                                                                @endforeach
+                                                            @endif
+                                                        </li><!-- .comment -->
 
-                                                            <div class="comment-content clear-mrg">
-                                                                <span style="color: #0d6efd">@ {{$comment->name }}</span>
-                                                                <p>{{$child->comment}}</p>
-                                                            </div>
+                                                    @endforeach
+                                                </ol><!-- .children -->
+                                            @endif
+                                        </li><!-- .comment -->
 
-                                                            <footer class="comment-footer">
-                                                                <div class="comment-links">
-                                                                    <a class="comment-reply-link" rel="nofollow"
-                                                                       onclick="comment_answer({{$child->id}});event.preventDefault()"
-                                                                       aria-label="Reply to Mr WordPress">پاسخ</a>
-                                                                </div>
-                                                                <div class="comment-answer" id="comment_{{$child->id}}">
-                                                                    <livewire:comment.send :obj="$article" :status="0" :commentable_type="get_class($article)"
-                                                                                           :commentable_id="$article->id" :parent_id="$child->id" />
-                                                                </div>
-                                                            </footer>
-                                                        </article><!-- .comment-body -->
+                                    @endforeach
+                                </ol><!-- .comment-list -->
+                            </div><!-- .padd-box-sm -->
+                        @else
+                            <p class="text-center text-danger">نظرات این مقاله قابل نمایش نیست</p>
+                        @endif
 
-                                                        @if($child->child())
-                                                            @foreach($child->child()->get() as $chi)
-                                                                @include('layouts.comment' , ['comment' => $chi])
-                                                            @endforeach
-                                                        @endif
-                                                    </li><!-- .comment -->
-
-                                                @endforeach
-                                            </ol><!-- .children -->
-                                        @endif
-                                    </li><!-- .comment -->
-
-                                @endforeach
-                            </ol><!-- .comment-list -->
-                        </div><!-- .padd-box-sm -->
 
 
                     </div><!-- #comments -->
@@ -235,8 +250,11 @@
 
 
             <!-- Post Form: Logged Out -->
-            <livewire:comment.send :obj="$article" :status="1" :commentable_type="get_class($article)"
-                                   :commentable_id="$article->id"  />
+            @if($article->is_active == 1)
+                <livewire:comment.send :obj="$article" :status="1" :commentable_type="get_class($article)"
+                                       :commentable_id="$article->id"  />
+            @endif
+
 
         </div>
         <!-- .crt-paper-cont -->

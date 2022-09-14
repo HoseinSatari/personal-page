@@ -6,8 +6,11 @@
 
     @endslot
     @section('script')
+
         <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
-        <script src="/ckeditor/ckeditor.js"></script>
+
+
+
         <script src="/plugins/select2/select2.js"></script>
         <script>
             var options = {

@@ -7326,3 +7326,9 @@ blockquote.quote-side:before,
         filter: blur(4px);
     }
 }
+.text-danger{
+    color: #ff4848;
+    text-shadow: 0.3rem 0.5rem 0.9rem red;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+}

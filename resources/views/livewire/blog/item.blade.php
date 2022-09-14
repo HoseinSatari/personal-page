@@ -29,7 +29,11 @@
         </header>
 
         <div class="post-content entry-content editor clearfix clear-mrg">
-            <p>{{$article->short_descrip}}</p>
+            @if($article->is_active == 1)
+            <p>{{ $article->short_descrip }}</p>
+            @else
+             <p class="text-center text-danger">این مقاله غیر فعال است</p>
+            @endif
         </div>
 
         <footer class="post-footer">
