@@ -22,7 +22,7 @@ class SkillController extends Controller
             $skill->where('name', 'LIKE', "%{$keyword}%")->orWhere('percent', 'LIKE', "%{$keyword}%");
         }
         return view('admin.skill.list', [
-            'skills' => $skill->paginate('10'),
+            'skills' => $skill->paginate('50'),
         ]);
     }
 
