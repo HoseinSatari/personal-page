@@ -23,7 +23,11 @@ CKEDITOR.editorConfig = function (config) {
 
     config.language = 'en';
 
-    config.extraPlugins = 'syntaxhighlight';
+    // config.extraPlugins = 'syntaxhighlight';
+    config.extraPlugins = 'codesnippet';
+    config.codeSnippet_theme = 'paraiso.dark';
+
+
 
     // config.toolbar = [
     //     { items: ['Templates', 'clipboard', 'Cut', 'Paste', 'Redo', 'Undo', 'Find', '-', 'basicstyles', 'cleanup', 'Link', 'Unlink', 'Anchor', 'syntaxhighlight', 'Image', 'Smiley', 'Flash', 'Table', 'SpecialChar', 'Syntaxhighlight', '-', 'Blockquote', 'Maximize', 'Preview'] },

@@ -35,7 +35,8 @@
     <!-- template rtl version -->
     <link rel="stylesheet" href="/dist/css/custom-style.css">
     <link rel="stylesheet" href="/plugins/select2/select2.css">
-
+    <link href="/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css" rel="stylesheet">
+    <link rel="stylesheet" href="/ckeditor/theme/styles/paraiso-dark.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -101,6 +102,10 @@
 <script src="/dist/js/demo.js"></script>
 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
+<script src="/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+<script>
+    config.codeSnippet_theme = 'pojoaque';
+</script>
 <script src="/date/persian-date.min.js"></script>
 <script src="/date/persian-datepicker.min.js"></script>
 

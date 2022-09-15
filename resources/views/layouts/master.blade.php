@@ -37,7 +37,7 @@
     @livewireStyles
     <!-- Theme Color -->
     <meta name="theme-color" content="#d14b4a">
-
+    <link rel="stylesheet" href="/ckeditor/theme/styles/paraiso-dark.min.css">
     <!-- Modernizer -->
     <script type="text/javascript" src="/assets/js/vendor/modernizr-3.3.1.min.js"></script>
 </head>
