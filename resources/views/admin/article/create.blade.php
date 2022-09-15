@@ -67,7 +67,7 @@
                         <label for="inputEmail3" class="col-sm-2 control-label">متن مقاله :</label>
                         <textarea class="form-control @error('body') is-invalid @enderror" name="body"
                                   id="text" cols="30"
-                                  rows="10">{{ old('body') }}</textarea>
+                                  rows="10">{!! old('body') !!}</textarea>
                         @error('body')
                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
